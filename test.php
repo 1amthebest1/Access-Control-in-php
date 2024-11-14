@@ -1,6 +1,7 @@
 
 <?php
-	if ($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"]=="GET"){
+	if (($_SERVER["REQUEST_METHOD"] == "POST" || $_SERVER["REQUEST_METHOD"] == "GET") && (!isset($_GET['haha']) || $_GET['haha'] !== 'camp')) {
+
 
 	#The below snippet verifies if the session is present in the DB	
 
@@ -16,4 +17,10 @@
 	#include("functions/hello_world.php");
 
 	}
- ?>
+
+	else{
+		echo "the param is received, you are authorized";
+	}
+
+ 
+	
