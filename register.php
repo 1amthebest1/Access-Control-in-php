@@ -26,15 +26,15 @@
         // Set cookies with fixed names
         setcookie('user', $User, time() + (86400 * 30), "/");
 
-        GET_VALUES($User, $Session);
-        header("Location: register.php");
+        #GET_VALUES($User, $Session);
+        #header("Location: register.php");
 
         }
 
     if($_SERVER["REQUEST_METHOD"] == "GET"){
 
         echo "<a href=\"test.php\">hola</a>";
-        
+
         }
 
     ?>
