@@ -59,7 +59,7 @@ function GET_VALUES($name,$hash) {
             // Check if the query returned any rows
             if ($result->num_rows > 0) {
                 echo "Values should be present";
-                #header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) . "?haha=camp");
                 exit;
             } else {
                 echo "No matching records found. <br>";
