@@ -78,4 +78,50 @@ function GET_VALUES($name,$hash) {
 
     // Close connection
     $conn->close();
+} ?>
+
+<?php function LOGIN_CHECK($name, $user_pass) {
+    global $servername, $username, $pass, $database;
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $pass, $database);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare SQL statement to retrieve user
+    $sql = "SELECT * FROM users WHERE usernames = ? AND password = ?";
+    if ($stmt = $conn->prepare($sql)) {
+        // Bind parameters
+        $stmt->bind_param("ss", $name, $user_pass);
+
+        // Execute query
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+
+            // Check if the query returned any rows
+            if ($result->num_rows > 0) {
+                echo "You have successfully logged in";
+                header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) . "?haha=camp");
+                exit;
+            } else {
+                echo "No matching records found. <br>";
+                header("Location: logout.php");
+                exit;
+            }
+        } else {
+            echo "Error executing query: " . $stmt->error;
+        }
+
+        // Close statement
+        $stmt->close();
+    } else {
+        echo "Error preparing query: " . $conn->error;
+    }
+
+    // Close connection
+    $conn->close();
 }
+?>
