@@ -4,6 +4,7 @@
 
 
 	#The below snippet verifies if the session is present in the DB	
+	#starts the session
 
 	session_start();
 
