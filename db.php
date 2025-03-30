@@ -2,7 +2,7 @@
 $servername = "127.0.0.1";
 $username = "pma";
 $pass = "pmapass";
-$database = "Roland_DB";
+$database = "${}";
 
 // Function to handle database connection
 function DB_manager($usernames, $password, $PHP_SESSID) {
